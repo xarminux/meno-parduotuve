@@ -1,27 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Card from "../Components/Card";
-import Navbar from "../Components/Navbar"; // Importuojame Card komponentą
+import Navbar from "../Components/Navbar";
+import itemsClient from "../services/ItemsClient";
 
 const ItemGallery = () => {
-  // Sukurkime masyvą su 30 kortelių duomenimis
-  const cardsData = Array.from({ length: 30 }, (_, index) => ({
-    id: index + 1,
-    name: `Prekė ${index + 1}`,
-    image: "https://images.squarespace-cdn.com/content/v1/618e7f223fb749481d23c9c1/8ad0b113-c63a-4db9-809a-4c3eb51122ba/foto+logo.jpg",
-    description: `Trumpas prekės aprašymas arba kiti svarbūs duomenys ${index + 1}`,
-  }));
+
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    itemsClient.getAllItems().then(res => {
+      setItems(res.data);
+    }).catch(error => {
+      console.error("Error fetching items:", error);
+    });
+  }, []);
 
   return (
     <div>
       <Navbar/>
-    <div className="flex flex-wrap justify-center ">
-      
-      {cardsData.map((card) => (
-        <div key={card.id} className="m-4">
-          <Card {...card} />
-        </div>
-      ))}
-    </div>
+      <div className="flex flex-wrap justify-center">
+        {items.map((item) => (
+          <div key={item.id} className="m-4">
+            <Card
+              description={item.aprasymas}
+              imageUrl={item.paveikslelis}
+              price={item.kaina}
+              name={item.pavadinimas}
+              productId = {item.id}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

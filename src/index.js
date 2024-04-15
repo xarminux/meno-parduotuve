@@ -9,6 +9,7 @@ import Register from './Pages/Register';
 import AddItem from './Pages/AddItem';
 import ItemGallery from './Pages/ItemGallery';
 import MyItems from './Pages/MyItems';
+import Cart from './Pages/Cart';
 import Admin from './admin/admin';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -23,6 +24,7 @@ root.render(
             <Route path="/Prideti" element={<AddItem />} />
             <Route path="/Meno-Sarasas" element={<ItemGallery />} />
             <Route path="/Mano-Kuriniai" element={<MyItems />} />
+            <Route path="/Cart" element={<Cart />} />
             <Route path="/Admin" element={<Admin />} />
 
         </Routes>

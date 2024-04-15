@@ -1,0 +1,15 @@
+[
+    {
+      "id": 1,
+      "name": "Prekė 1",
+      "image": "https://images.squarespace-cdn.com/content/v1/618e7f223fb749481d23c9c1/8ad0b113-c63a-4db9-809a-4c3eb51122ba/foto+logo.jpg",
+      "description": "Trumpas prekės aprašymas arba kiti svarbūs duomenys 1"
+    },
+    {
+      "id": 2,
+      "name": "Prekė 2",
+      "image": "https://images.squarespace-cdn.com/content/v1/618e7f223fb749481d23c9c1/8ad0b113-c63a-4db9-809a-4c3eb51122ba/foto+logo.jpg",
+      "description": "Trumpas prekės aprašymas arba kiti svarbūs duomenys 2"
+    }
+  ]
+  

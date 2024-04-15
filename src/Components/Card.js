@@ -1,21 +1,32 @@
 import React from "react";
+import cartClient from "../services/CartClient"; // Pakeista iš "../services/CartClient"
 
-const Card = () => {
+const Card = ({ description, imageUrl, price, name, productId }) => {
+  const userId = "3fa85f64-5717-4562-b3fc-2c963f66afa6"; // Fiksuotas vartotojo ID
+  
+  const handleAddToCart = () => {
+    // Pridedame prekę į krepšelį pasinaudodami CartService
+    cartClient.AddCart(productId, userId); // Pakeista iš CartClient.AddCart į cartClient.AddCart
+  };
+
   return (
     <div className="max-w-xs rounded overflow-hidden shadow-lg">
       <img
         className="w-full"
-        src="https://images.squarespace-cdn.com/content/v1/618e7f223fb749481d23c9c1/8ad0b113-c63a-4db9-809a-4c3eb51122ba/foto+logo.jpg"
+        src={imageUrl}
         alt="Prekės pavadinimas"
       />
       <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">Prekės pavadinimas</div>
+        <div className="font-bold text-xl mb-2">{name}</div>
         <p className="text-gray-700 text-base">
-          Trumpas prekės aprašymas arba kiti svarbūs duomenys.
+          {description}
+        </p>
+        <p className="text-gray-700 text-base">
+          Price: {price}
         </p>
       </div>
       <div className="px-6 py-4">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <button onClick={handleAddToCart} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
           Pridėti į krepšelį
         </button>
       </div>
